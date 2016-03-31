@@ -1,4 +1,5 @@
 # LED blink app
+
 from RPi import GPIO
 from math import pi
 from time import sleep
@@ -23,7 +24,7 @@ def LED_Blink (pace):
         LED_Off(pace)
         
 def Key_In ():
-    print("hallo")
+    print("hello master, what shall I do?")
     i = 0
     pace = 0.5
     LED_Off(pace)
