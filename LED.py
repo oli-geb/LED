@@ -3,7 +3,7 @@
 from RPi import GPIO
 from math import pi
 from time import sleep
-from _thread import start_new_thread
+# from _thread import start_new_thread
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
@@ -55,7 +55,7 @@ def Key_In ():
             print("fast - setzt Blink Timer auf 0.2s")
             print("normal - setzt Blink Timer auf 0.5s")
             print("slow - setzt Blink Timer auf 0.8s")
-            print("count5 - zählt Anzahl der Tatstendruecke bis 5")
+            print("count5 - zählt Anzahl der Tastendrücke bis 5")
             print("stop - Abbruch und Ausschalten der LED")
             print("help - zeigt diese Hilfe")
         else:
@@ -64,7 +64,7 @@ def Key_In ():
 
 def Switch_In (maxcount):
     i = 0
-    print("Bitte Taster an GPIO druecken")
+    print("Bitte Taster an GPIO drücken")
     while i < maxcount:
         if GPIO.input(10):
             LED_On(0.5)
