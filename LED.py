@@ -44,6 +44,8 @@ def Key_In ():
             pace = 0.5
         elif kommando == 'slow':
             pace = 0.8
+        elif kommando == 'count5':
+            Switch_In(5)
         elif kommando == "stop":
             break
         elif kommando == 'help':
@@ -53,24 +55,28 @@ def Key_In ():
             print("fast - setzt Blink Timer auf 0.2s")
             print("normal - setzt Blink Timer auf 0.5s")
             print("slow - setzt Blink Timer auf 0.8s")
+            print("count5 - zählt Anzahl der Tatstendruecke bis 5")
             print("stop - Abbruch und Ausschalten der LED")
             print("help - zeigt diese Hilfe")
         else:
             print ("Kommando nicht bekannt")
     LED_Off(pace)    
 
-def Switch_In ():
+def Switch_In (maxcount):
     i = 0
-    while True:
+    print("Bitte Taster an GPIO druecken")
+    while i < maxcount:
         if GPIO.input(10):
             LED_On(0.5)
             sleep(0.05)
             i = i+1
+            print("Taste gedrueckt: ",i)
             while GPIO.input(10):
                 sleep(0.01)
             LED_Off(0.5)
-        if i == 5:
-            break
+    
+        
+# threading alternative does not work, input command blocks output
+# start_new_thread(Key_In,())
 
-start_new_thread(Key_In,())
-start_new_thread(Switch_In,())    
+Key_In()    
