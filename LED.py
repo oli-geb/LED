@@ -1,3 +1,4 @@
+# LED blink app
 from RPi import GPIO
 from math import pi
 from time import sleep
